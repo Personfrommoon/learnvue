@@ -1,9 +1,8 @@
 <script setup>
-
+import Tabs from './components/Tabs.vue';
 </script>
 
 <template>
-    <router-view>
-        
-    </router-view>
+  <tabs></tabs>
+  <router-view></router-view>
 </template>
