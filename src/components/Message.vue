@@ -4,7 +4,7 @@
 </script>
 
 <template>
-    <article class="message is-warning is-medium" v-if="open">
+    <article class="message is-primary is-medium" v-if="open">
         <div class="message-header">
             <p>Kristofer Valk</p>
             <button class="delete" @click="$emit('close')"></button>
