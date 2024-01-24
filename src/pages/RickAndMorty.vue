@@ -1,35 +1,14 @@
-<script setup>
-import axios from 'axios';
-import { ref } from 'vue';
-import CharacterCard from '../components/CharacterCard.vue'
-
-let info = ref({});
-let chars = ref([]);
-
-getCharacters('https://rickandmortyapi.com/api/character')
-
-async function getCharacters(url) {
-    let response = await axios.get(url);
-    console.log(response.data);
-    info.value = response.data.info;
-    chars.value = response.data.results;
-}
-async function next() {
-    getCharacters(info.value.next)
-}
-
-async function prev() {
-    getCharacters(info.value.prev)
-}
-
-</script>
-
 <template>
     <div class="container">
         <div class="field has-addons">
             <p class="control">
-                <button :disabled="info.prev === null" class="button " @click="prev()">
+                <button :disabled="!info.prev" class="button" @click="prev()">
                     <span>Previous</span>
+                </button>
+            </p>
+            <p class="control">
+                <button class="button is-static has-text-dark">
+                    <span>{{ page }}/{{ info.pages }}</span>
                 </button>
             </p>
             <p class="control">
@@ -45,3 +24,34 @@ async function prev() {
         </div>
     </div>
 </template>
+<script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import CharacterCard from '../components/CharacterCard.vue';
+
+let info = ref({});
+let chars = ref([]);
+let page = ref(1);
+getCharacters(page.value);
+
+async function getCharacters(page) {
+    let response = await axios.get('https://rickandmortyapi.com/api/character', {
+        params: {
+            page // equal to page: page 
+        }
+    });
+    console.log(response.data);
+    info.value = response.data.info;
+    chars.value = response.data.results;
+}
+
+async function next(){
+    getCharacters(++page.value);
+}
+
+async function prev(){
+    getCharacters(--page.value);
+}
+
+
+</script>
