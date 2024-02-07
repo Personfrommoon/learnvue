@@ -10,15 +10,17 @@ import Messages from './pages/Messages.vue';
 import ChuckNorris from './pages/ChuckNorris.vue';
 import RickAndMorty from './pages/RickAndMorty.vue';
 import CanvasExample from './pages/CanvasExample.vue';
+import MapExample from './pages/MapExample.vue';
 
 const routes = [
     { path: '/', component: Home, name: 'Home' },
     { path: '/todo', component: ToDo, name: 'ToDo' },
     { path: '/modals', component: Modals, name: 'Modals' },
-    { path: '/messages', component: Messages, name: 'Messages' },
+    { path: '/messages', component: Messages, name: 'Message' },
     { path: '/chucknorris', component: ChuckNorris, name: 'Chuck Norris'},
     { path: '/rickandmorty', component: RickAndMorty, name: 'Rick And Morty' },
     { path: '/canvas', component: CanvasExample, name: 'Canvas' },
+    { path: '/map', component: MapExample, name: 'Map' },
 ];
 
 const router = createRouter({
