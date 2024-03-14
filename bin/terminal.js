@@ -20,6 +20,7 @@ for(let i = 4168; i > 4158; i--){
         console.log('LIVE REQUEST!!!!');
     } else {
         data = fs.readFileSync(cacheName);
+        console.log('CACHED REQUEST!!!!');
     }
 
     //console.log(res.data);
